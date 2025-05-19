@@ -101,7 +101,7 @@ const HeroSection = () => {
                         animate="visible"
                         className="flex flex-wrap gap-4"
                     >
-                        <Link href="services">
+                        <Link href="#services">
                             <Button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800 shadow-lg px-6 py-2.5 rounded-full">
                                 Our Services
                             </Button>
