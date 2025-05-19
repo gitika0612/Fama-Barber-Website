@@ -79,7 +79,7 @@ const BlogSection = () => {
                                 </p>
                                 <a href={post.url} target="_blank" rel="noopener noreferrer">
                                     <Button
-                                        className="relative overflow-hidden"
+                                        className="cursor-pointer relative overflow-hidden"
                                     >
                                         <span className="transition-colors duration-300 group-hover:text-transparent 
                    bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 

@@ -18,21 +18,21 @@ const BookingCTASection = () => {
             </p>
 
             <div className="flex flex-col md:flex-row justify-center gap-6 w-full max-w-4xl mx-auto">
-            <Link href={'#contact'}>
-                <Button
-                    className="w-full md:w-auto bg-white text-gradient-to-r from-blue-600 via-purple-600 to-pink-600 font-bold py-3 px-8 rounded-lg hover:brightness-110 transition"
-                    onClick={() => {
-                        document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                >
-                    Book an Appointment
-                </Button>
+                <Link href={'#contact'}>
+                    <Button
+                        className="cursor-pointer w-full md:w-auto bg-white text-gradient-to-r from-blue-600 via-purple-600 to-pink-600 font-bold py-3 px-8 rounded-lg hover:brightness-110 transition"
+                        onClick={() => {
+                            document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                    >
+                        Book an Appointment
+                    </Button>
                 </Link>
 
                 <Link href={'#services'}>
                     <Button
                         variant="outline"
-                        className="w-full md:w-auto border-white text-white font-semibold py-3 px-8 rounded-lg hover:text-gradient-to-r from-blue-600 via-purple-600 to-pink-600 transition"
+                        className=" cursor-pointer w-full md:w-auto border-white text-white font-semibold py-3 px-8 rounded-lg hover:text-gradient-to-r from-blue-600 via-purple-600 to-pink-600 transition"
                     >
                         View Our Services
                     </Button>

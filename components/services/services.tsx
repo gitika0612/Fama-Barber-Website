@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import {
     Scissors,
     Droplet,
@@ -64,14 +64,28 @@ const servicesData = [
     },
 ];
 
-const cardVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
+const variants: Variants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+      position: "absolute",
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      position: "relative",
+    },
+    exit: (direction) => ({
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+      position: "absolute",
+    }),
+  };
 
 const Services = () => {
     const [startIndex, setStartIndex] = useState(0);
     const [cardsPerPage, setCardsPerPage] = useState(3);
+    const [direction, setDirection] = useState(0);
 
     useEffect(() => {
         const handleResize = () => {
@@ -88,14 +102,18 @@ const Services = () => {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-
     const handlePrev = () => {
-        if (startIndex > 0) setStartIndex(startIndex - cardsPerPage);
+        if (startIndex > 0) {
+            setDirection(-1);
+            setStartIndex(startIndex - cardsPerPage);
+        }
     };
 
     const handleNext = () => {
-        if (startIndex + cardsPerPage < servicesData.length)
+        if (startIndex + cardsPerPage < servicesData.length) {
+            setDirection(1);
             setStartIndex(startIndex + cardsPerPage);
+        }
     };
 
     const visibleCards = servicesData.slice(startIndex, startIndex + cardsPerPage);
@@ -114,28 +132,30 @@ const Services = () => {
                 </p>
             </div>
 
-            {/* Cards */}
-            <div className="max-w-7xl mx-auto flex flex-col gap-6">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1">
-                    <AnimatePresence>
+            {/* Slide container */}
+            <div className="max-w-7xl mx-auto flex flex-col gap-6 relative min-h-[400px]">
+                <AnimatePresence custom={direction} initial={false}>
+                    <motion.div
+                        key={startIndex} // Important to re-render on pagination change
+                        custom={direction}
+                        variants={variants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.5 }}
+                        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+                    >
                         {visibleCards.map((service, index) => {
                             const Icon = service.icon;
                             return (
-                                <motion.div
-                                    key={index}
-                                    variants={cardVariants}
-                                    initial="hidden"
-                                    animate="visible"
-                                    exit="hidden"
+                                <div
+                                    key={service.title}
                                     className="relative group bg-gray-50 dark:bg-[#1a1a35] rounded-xl shadow-md p-8 hover:shadow-xl transition-transform duration-0 hover:scale-105"
                                 >
-
-
-                                    {/* Gradient line on top - no transition for immediate effect */}
+                                    {/* Gradient line on top */}
                                     <div
                                         className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 rounded-t-xl origin-left transform scale-x-0 group-hover:scale-x-100 transition-transform duration-1000 ease-out"
                                     />
-
 
                                     {/* Icon top-left */}
                                     <div className="absolute top-6 left-6 text-blue-600 dark:text-blue-400">
@@ -146,7 +166,9 @@ const Services = () => {
                                         <h3 className="text-2xl font-semibold mb-2 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-transparent bg-clip-text">
                                             {service.title}
                                         </h3>
-                                        <h4 className="text-md text-gray-600 dark:text-gray-400 mb-4">{service.subtitle}</h4>
+                                        <h4 className="text-md text-gray-600 dark:text-gray-400 mb-4">
+                                            {service.subtitle}
+                                        </h4>
                                         <p
                                             className="text-gray-700 dark:text-gray-300 mb-6 line-clamp-3 leading-relaxed"
                                             title={service.description}
@@ -158,16 +180,18 @@ const Services = () => {
                                                 <li key={idx}>{item}</li>
                                             ))}
                                         </ul>
-                                        <p className="mt-6 text-sm italic text-blue-600">Book your appointment now!</p>
+                                        <p className="mt-6 text-sm italic text-blue-600">
+                                            Book your appointment now!
+                                        </p>
                                     </div>
-                                </motion.div>
-
+                                </div>
                             );
                         })}
-                    </AnimatePresence>
-                </div>
-                {/* Pagination on right */}
-                <div className="flex  justify-end gap-4">
+                    </motion.div>
+                </AnimatePresence>
+
+                {/* Pagination */}
+                <div className="flex justify-end gap-4 mt-6">
                     <button
                         onClick={handlePrev}
                         disabled={startIndex === 0}
@@ -178,7 +202,7 @@ const Services = () => {
                             }`}
                         aria-label="Previous Services"
                     >
-                        <ChevronLeft size={24} />
+                        <ChevronLeft size={24} className="cursor-pointer" />
                     </button>
                     <button
                         onClick={handleNext}
@@ -190,7 +214,7 @@ const Services = () => {
                             }`}
                         aria-label="Next Services"
                     >
-                        <ChevronRight size={24} />
+                        <ChevronRight size={24} className="cursor-pointer" />
                     </button>
                 </div>
             </div>

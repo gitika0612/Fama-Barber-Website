@@ -36,7 +36,7 @@ const Header = () => {
                         <a href="tel:+19406129127" className="ml-2 hover:text-primary">+1 940-612-9127</a>
                     </div>
                     <Link href="#contact">
-                        <Button className="bg-blue-600 text-white hover:bg-blue-700">Book an Appointment</Button>
+                        <Button className="cursor-pointer bg-blue-600 text-white hover:bg-blue-700">Book an Appointment</Button>
                     </Link>
                 </div>
 
@@ -117,7 +117,7 @@ const Header = () => {
                     </Card>
 
                     {/* CTA Button */}
-                    <Button className="w-full bg-blue-600 text-white hover:bg-blue-700">
+                    <Button className="cursor-pointer w-full bg-blue-600 text-white hover:bg-blue-700">
                         Book an Appointment
                     </Button>
                 </div>

@@ -118,7 +118,7 @@ const Contact = () => {
                     <Button
                         type="submit"
                         onClick={() => console.log("Submit button clicked")}
-                        className="bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white px-8 py-3 rounded-full text-lg hover:opacity-90 transition duration-300"
+                        className="cursor-pointer bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white px-8 py-3 rounded-full text-lg hover:opacity-90 transition duration-300"
                     >
                         Submit
                     </Button>

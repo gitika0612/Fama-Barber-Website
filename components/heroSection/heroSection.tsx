@@ -102,7 +102,7 @@ const HeroSection = () => {
                         className="flex flex-wrap gap-4"
                     >
                         <Link href="#services">
-                            <Button className="bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800 shadow-lg px-6 py-2.5 rounded-full">
+                            <Button className="cursor-pointer bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:from-blue-600 hover:to-blue-800 shadow-lg px-6 py-2.5 rounded-full">
                                 Our Services
                             </Button>
                         </Link>
@@ -110,7 +110,7 @@ const HeroSection = () => {
                         <Link href="#contact">
                             <Button
                                 variant="outline"
-                                className="dark:border-white dark:text-white hover:bg-white/10 px-6 py-2.5 rounded-full"
+                                className="cursor-pointer dark:border-white dark:text-white hover:bg-white/10 px-6 py-2.5 rounded-full"
                             >
                                 Book Now
                             </Button>

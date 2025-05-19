@@ -107,9 +107,9 @@ const PricingSection = () => {
                                     {pkg.highlight ? (
                                         <Link href={"#contact"}>
                                         <Button
-                                            className="w-full font-semibold rounded-xl 
+                                            className="cursor-pointer w-full font-semibold rounded-xl 
                                             bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 
-                                            text-white cursor-default"
+                                            text-white "
                                         >
                                             Book Now
                                         </Button>
@@ -117,7 +117,7 @@ const PricingSection = () => {
                                     ) : (
                                         <Link href={"#contact"}>
                                         <Button
-                                            className="w-full font-semibold rounded-xl 
+                                            className="cursor-pointer w-full font-semibold rounded-xl 
                                             bg-gray-300 text-black hover:bg-blue-600 hover:text-white 
                                             dark:bg-gray-700 dark:text-white dark:hover:bg-blue-600 dark:hover:text-white"
                                         >

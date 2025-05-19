@@ -69,7 +69,7 @@ const EventsPromotionsSection = () => {
                                 <p className="text-sm text-blue-400 mb-2">{event.date}</p>
                                 <p className="text-gray-700 dark:text-gray-300 flex-grow mb-6">{event.description}</p>
                                 <Link href="#contact">
-  <Button className="group w-fit self-start">
+  <Button className="cursor-pointer group w-fit self-start">
     <span className="transition-colors duration-300 group-hover:text-transparent 
                      bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 
                      bg-clip-text">
